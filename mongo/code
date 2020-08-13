@@ -1,0 +1,283 @@
+
+
+db.getCollection('teacher').find({})
+
+db.getCollection('teacher').insert({
+  "model": "Yamaha Fazer",
+  "year": 2008,
+  "price": 3500
+})
+
+db.getCollection('teacher').insert({
+  name: "Dima",
+  proffesion: "IT Dev",
+  cars: [
+    {model: "Volvo"},
+    {model: "Mers"}
+  ]
+})
+
+db.getCollection('teacher').find({payment: 2500})
+
+db.getCollection('teacher').find({
+  payment: 2500,
+  class_curator: 6
+})
+
+db.getCollection('teacher').find(
+  {
+    payment: 2000
+  },
+  {
+    name: true,
+    payment: 1,
+    _id: 0
+  }
+)
+
+
+db.getCollection('teacher').find({
+  $or: [
+    {payment: 2500},
+    {payment: 2000},
+    {class_curator: 8}
+  ]
+})
+
+//     S * F t WHERE payemt = 2500 OR payment = 2000 OR class_curator = 5
+
+
+db.getCollection('teacher').find({
+  $and: [
+    {payment: 2000},
+    {class_curator: 7}
+  ]
+})
+
+
+db.getCollection('teacher').find({
+  name: /^o/i
+})
+
+db.getCollection('teacher').find({
+  name: /ch$/
+})
+
+
+db.getCollection('teacher').find({
+  name: /.*tor.*/
+})
+
+
+db.getCollection('teacher')
+  .find({})
+  .sort({payment: -1, class_curator: -1})
+
+
+db.getCollection('teacher').find({}).limit(2).skip(4)
+
+
+
+// db.getCollection('teacher').find({
+//     payment: {
+// //             $gte: 2500 // >=
+// //             $lt: 2500 // <
+// //             $lte: 2500 // <
+// //             $eq 2500 // ===
+// //             $ne: 2500 // !==
+//         }
+// })
+
+
+db.getCollection('teacher').find({
+  class_curator: {
+    $in: [7, 8, 9]
+  }
+})
+
+db.getCollection('teacher').find({
+  class_curator: {
+    $nin: [7, 8, 9]
+  }
+})
+
+db.getCollection('teacher').find({
+  class_curator: {
+    $not: {
+      $in: [7, 8, 9]
+    }
+  }
+})
+
+
+db.getCollection('teacher').update(
+  {}, // FIND
+  {}, // UPDATE
+  {} // OPTIONS
+)
+
+
+db.getCollection('teacher').update(
+  { payment: 2500 },
+  { $set: {
+      cars: [{model: "Volvo"}, {model: "Zaz"}]
+    }
+  },
+  { multi: true }
+)
+
+
+db.getCollection('teacher').update(
+  { payment: 2100 },
+  { $set: {
+      payment: 3100,
+      name: 'Ivan'
+    }
+  },
+  { multi: true }
+)
+
+
+db.getCollection('teacher').find({
+  cars: {
+    $size: 2
+  }
+})
+
+
+db.getCollection('teacher').find({
+  cars: {
+    $exists: false
+  }
+})
+
+
+
+db.getCollection('teacher').update(
+  {
+    cars: {
+      $size: 4
+    }
+  },
+  {
+    $set: {
+      "cars.$[].model": "Rover"
+    }
+  },
+  {multi: true}
+)
+
+
+db.getCollection('teacher').update(
+  {
+    cars: {
+      $size: 4
+    }
+  },
+  {
+    $set: {
+      "cars.3.model": "ABABAGALAMAGA"
+    }
+  },
+  {multi: true}
+)
+
+db.getCollection('teacher').find({
+  "cars.model": "Mers"
+})
+
+db.getCollection('teacher').find({
+  "cholovik.koxanka.name": "Ivanka"
+})
+
+
+db.getCollection('teacher').aggregate([
+  {},
+  {},
+  {},
+  {}
+])
+
+
+db.getCollection('teacher').aggregate([
+  {
+    $group: {
+      "_id": "$payment",
+      countOfTeaachers: {
+        $sum: 1
+      }
+    }
+  }
+])
+
+
+db.getCollection('teacher').aggregate([
+  {
+    $group: {
+      "_id": "$payment",
+      countOfTeaachers: {
+        $sum: 1
+      }
+    }
+  },
+  {
+    $sort: {countOfTeaachers: 1}
+  }
+])
+
+
+
+db.getCollection('teacher').aggregate([
+  {
+    $group: {
+      "_id": "$payment",
+      countOfTeaachers: {
+        $sum: 1
+      }
+    }
+  },
+  {
+    $sort: {countOfTeaachers: -1}
+  },
+  {
+    $match: {
+      countOfTeaachers: {
+        $gt: 2
+      }
+    }
+  }
+])
+
+
+db.getCollection('teacher').aggregate([
+  {
+    $count: "AllRest"
+  }
+])
+
+
+db.getCollection('teacher').aggregate([
+  {
+    $group: {
+      "_id": 0,
+      sumP: {
+        $sum: "$payment"
+      }
+    }
+  }
+])
+
+
+db.getCollection('teacher').aggregate([
+  {
+    $group: {
+      "_id": 0,
+      sumP: {
+//      $sum: "$payment"
+//      $avg: "$payment"
+//      $max: "$payment"
+        $min: "$payment"
+      }
+    }
+  }
+])
