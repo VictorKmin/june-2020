@@ -54,6 +54,7 @@ module.exports = {
         'no-console': 'warn',
         'no-else-return': 'error',
         'no-empty': 'off',
+        'no-plusplus': 'off',
         'no-empty-functions': 'off',
         'consistent-return': 'off',
         'no-eval': 'error',
