@@ -4,8 +4,12 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
+    "joi": "^17.3.0",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
   },
@@ -20,6 +24,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "@types/express": "^4.17.9",
+    "@types/bcrypt": "^3.0.0",
+    "@types/joi": "^14.3.4",
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/sequelize": "^4.28.9"
   },
   "lint-staged": {
