@@ -1,7 +1,11 @@
 const cron = require('node-cron');
 
-module.exports = () => {
-    cron.schedule('*/10 * * * * *', () => {
+const calculateStatistic = require('./calculate-shop-info.js');
 
+module.exports = () => {
+    cron.schedule('*/10 * * * * *', async () => {
+        console.log('ITERATION START');
+        await calculateStatistic();
+        console.log('ITERATION FINISH');
     });
 };
