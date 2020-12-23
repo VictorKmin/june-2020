@@ -5,6 +5,7 @@ const { Op } = require('sequelize');
 
 require('dotenv').config();
 const db = require('./dataBase').getInstance();
+const cronRun = require('./cron-jobs');
 
 const app = express();
 
@@ -67,4 +68,5 @@ app.use('*', (err, req, res, next) => {
 app.listen(5000, () => {
     // eslint-disable-next-line no-console
     console.log('App listen 5000');
+    cronRun();
 });
