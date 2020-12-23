@@ -1,6 +1,7 @@
 const { userService } = require('../services');
 
-module.exports = () => {
+module.exports = async () => {
     console.log('START');
-    return userService.findUsers();
+    const user = await userService.findUsers();
+    console.log(user);
 };
