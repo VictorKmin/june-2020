@@ -8,4 +8,11 @@ module.exports = () => {
         await calculateStatistic();
         console.log('ITERATION FINISH');
     });
+    
+    
+//     cron.schedule('0 0 * * *', async () => {
+//         console.log('ITERATION START');
+//         await calculateStatistic();
+//         console.log('ITERATION FINISH');
+//     });
 };
