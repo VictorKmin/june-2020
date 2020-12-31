@@ -1,7 +1,10 @@
 {
   "name": "lesson1",
   "version": "0.0.0",
-  "scripts": {},
+  "scripts": {
+    "start": "nodemon ./lesson12/app.js",
+    "first": "npx sequelize-cli db:migrate && nodemon ./lesson12/app.js"
+  },
   "private": true,
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -19,9 +22,11 @@
     "node-cron": "^2.0.3",
     "pug": "^3.0.0",
     "sequelize": "^6.3.5",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
+    "nodemon": "^2.0.6",
     "@types/express-handlebars": "^3.1.0",
     "@types/eslint": "^7.2.5",
     "husky": "^4.3.0",
@@ -40,7 +45,8 @@
     "@types/jsonwebtoken": "^8.5.0",
     "@types/mongoose": "^5.10.3",
     "@types/nodemailer": "^6.4.0",
-    "@types/sequelize": "^4.28.9"
+    "@types/sequelize": "^4.28.9",
+    "@types/winston": "^2.4.4"
   },
   "lint-staged": {
     "*.{js, json}": [
