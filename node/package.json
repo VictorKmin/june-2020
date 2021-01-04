@@ -7,6 +7,7 @@
   },
   "private": true,
   "dependencies": {
+    "@sentry/node": "^5.29.2",
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "email-templates": "^8.0.2",
@@ -16,12 +17,13 @@
     "fs-extra": "^9.0.1",
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
-    "mysql2": "^2.2.5",
     "mongoose": "^5.11.8",
-    "nodemailer": "^6.4.17",
+    "mysql2": "^2.2.5",
     "node-cron": "^2.0.3",
+    "nodemailer": "^6.4.17",
     "pug": "^3.0.0",
     "sequelize": "^6.3.5",
+    "socket.io": "2.2.0",
     "uuid": "^8.3.2",
     "winston": "^3.3.3"
   },

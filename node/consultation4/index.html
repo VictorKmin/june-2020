@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+
+<button id="btn"> SEND </button>
+
+<script>
+    const socket = io('http://localhost:5000');
+
+    document.getElementById('btn').onclick = () => {
+      console.log('CLK');
+      socket.emit('users.get.all');
+    }
+
+
+    socket.on('users.all', users => {
+      users.forEach(user => {
+        let htmlDivElement = document.createElement('div');
+        let htmlButtonElement = document.createElement('button');
+
+        htmlButtonElement.onclick = hanleDeleteUser
+
+        htmlButtonElement.innerText = 'DELL'
+
+        htmlDivElement.innerText = JSON.stringify(user);
+        htmlDivElement.appendChild(htmlButtonElement);
+
+        document.body.appendChild(htmlDivElement);
+      })
+    })
+
+    function hanleDeleteUser(e) {
+      let text = e.target.parentNode.firstChild.nodeValue;
+
+      const user = JSON.parse(text);
+
+      socket.emit('users.delete', {userId: user.id})
+    }
+
+</script>
+
+</body>
+</html>
